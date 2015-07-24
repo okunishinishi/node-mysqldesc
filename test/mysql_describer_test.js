@@ -26,28 +26,34 @@ exports['Mysql describer'] = function (test) {
         describer.connect();
         async.series([
             function (callback) {
-                describer.execute(setupSql, function (err, data) {
+                describer._execute(setupSql, function (err, data) {
                     callback(err);
                 });
             },
             function (callback) {
-                describer.showDatabases(function (err, names) {
+                describer._showDatabases(function (err, names) {
                     test.ifError(err);
                     test.ok(names);
-                    callback(null);
+                    callback(err);
                 });
             },
             function (callback) {
-                describer.showTables('descmysql_test', function (err, names) {
+                describer._showTables('descmysql_test', function (err, names) {
                     test.ifError(err);
                     test.ok(names);
-                    callback(null);
+                    callback(err);
                 });
             },
             function (callback) {
-                describer.descTable('descmysql_test', 'TEST_PERSON', function (err) {
+                describer._descTable('descmysql_test', 'TEST_PERSON', function (err) {
                     test.ifError(err);
-                    callback(null);
+                    callback(err);
+                });
+            },
+            function (callback) {
+                describer.describe('descmysql_test', function (err) {
+                    test.ifError(err);
+                    callback(err);
                 });
             }
         ], function (err) {

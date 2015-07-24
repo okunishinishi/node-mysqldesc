@@ -1,5 +1,5 @@
 {
-  "name": "node-descmysql",
+  "name": "descmysql",
   "version": "1.0.0",
   "description": "Node.js module to describe mysql tables. ",
   "bin": {
