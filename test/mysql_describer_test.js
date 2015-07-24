@@ -31,9 +31,22 @@ exports['Mysql describer'] = function (test) {
                 });
             },
             function (callback) {
-                describer.tableNames('descmysql_test', function (err, names) {
+                describer.showDatabases(function (err, names) {
                     test.ifError(err);
-                    test.deepEqual(names, ['TEST_PERSON', 'TEST_SHOP']);
+                    test.ok(names);
+                    callback(null);
+                });
+            },
+            function (callback) {
+                describer.showTables('descmysql_test', function (err, names) {
+                    test.ifError(err);
+                    test.ok(names);
+                    callback(null);
+                });
+            },
+            function (callback) {
+                describer.descTable('descmysql_test', 'TEST_PERSON', function (err) {
+                    test.ifError(err);
                     callback(null);
                 });
             }
