@@ -11,8 +11,8 @@ var path = require('path'),
     async = require('async'),
     fs = require('fs');
 
-var basedir = path.resolve(__dirname, '..'),
-    config = require('./configs/test_db_config'),
+var basedir = path.resolve(__dirname, '../..'),
+    config = require('../configs/test_db_config'),
     SETUP_SQL_FILE = path.resolve(basedir, 'ci/assets/setup_test_db.sql');
 
 /** @lends setupTestDb */

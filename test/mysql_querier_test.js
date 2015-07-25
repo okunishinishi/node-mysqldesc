@@ -7,7 +7,7 @@ var MysqlQuerier = require('../lib/querying/mysql_querier.js'),
     async = require('async');
 
 var testDbConfig = require('../ci/configs/test_db_config'),
-    setupTestDb = require('../ci/setup_test_db');
+    setupTestDb = require('../ci/helpers/setup_test_db');
 
 exports.setUp = function (done) {
     setupTestDb(function (err) {
