@@ -10,8 +10,13 @@ var testDbConfig = require('../ci/configs/test_db_config'),
 
 exports.setUp = function (done) {
     setupTestDb(function (err) {
+        testDbConfig.database = 'descmysql_test';
         done();
     });
+};
+exports.tearDown = function (done) {
+    delete testDbConfig.database;
+    done();
 };
 
 exports['Mysqldesc'] = function (test) {

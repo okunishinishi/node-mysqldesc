@@ -8,13 +8,11 @@
 
 var localConfig = {
         user: 'root',
-        multipleStatements: true,
-        database: 'descmysql_test'
+        multipleStatements: true
     },
     travisConfig = {
         user: 'root',
-        multipleStatements: true,
-        database: 'descmysql_test'
+        multipleStatements: true
     };
 
 var isTravis = String(process.env.TRAVIS) === "true";
