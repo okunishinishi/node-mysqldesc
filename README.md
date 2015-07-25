@@ -42,8 +42,8 @@ This will result like:
 
 ```javascript
 {
-     "TEST_PERSON": {
-          "PersonID": {
+     "TEST_PERSON": {  // Columns in "TEST_PERSON" table.
+          "PersonID": { // Spec of "TEST_PERSON.PersonID" column.
                "Type": "int(11)",
                "Null": "YES",
                "Key": "",
