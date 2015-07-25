@@ -9,7 +9,7 @@ var coz = require('coz'),
 
 
 module.exports = nodeunitTestcaseJsBud({
-    src: '../lib/*.js'
+    src: '../lib/**/*.js'
 });
 
 if (!module.parent) {

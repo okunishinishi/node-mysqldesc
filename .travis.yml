@@ -1,13 +1,17 @@
 language: node_js
+services: mysql
 node_js:
 - '0.11'
 before_install: 
 install:
 - npm install
 before_script:
-- mysql < ./ci/asset/create_test_schmea.sql;
 - npm link .
 script:
+- npm run build
 - npm run test
 - npm run cover
 - npm run report
+env:
+  global:
+    secure: RLmECg9tu3ZlNorTOEjcMQ5J1OvNKyJg6KuwV28hczb0NuaxrKmd+eIQCbUx1aCFgADsZcNnnZX+9hY310U6Eo5hV3IJidptdniLHTDcPUfVP07NuckwgXdQ27RShXIS1v4NQLxLU/asgkytG5qFk9GgVf1qG8BRsDJIj3idhIpygjLbs2gBM3F9lCBhQNAjAbAqXu7NauLxqyDoNKKbB35CO3Z16loWJaKvjDF5EowUwkbPiiqQ2/BXgioqtl33w45KtX6F0CZD+D84WmpTxkJyWVHRsml7GxVwS/KZnBCjALwpRZimf5FeHYBmgK0LChQDzDR0N6GfWf+0jg9V853B2z9vcItyToHbqv92jfAqXT0ZWD4n0w699DGZUCGNVnGy7GP7WB+novitBO4mf/tI6nbpgz1q1FhPEdJ9WPwHhqPiTr25Ompccjh2sivY0wBT34IEvpu6eQbrPeYX58Vo/ZQ2Wydo/4spnu6SeYcZTLNhG4FUj9gSMkCXpm8DeMriFbaro6DbigqhBzB1yysQscJOmpaL1UTP9QBkAywIFNUPEfEGMi8PV1XYs8ZpDHeCuARS8fs1CmS8xo1ro0ovuaJJhVV4SvPXOffC0pEbMYTy6i06EbiF1PtG0zGcbqqFxicGu3vCYf18RpPVZRXqja9/BN3dZQ7uXG2PW2U=

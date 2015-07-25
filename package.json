@@ -1,14 +1,15 @@
 {
-  "name": "descmysql",
-  "version": "1.0.0",
-  "description": "Node.js module to describe mysql tables. ",
+  "name": "mysqldesc",
+  "version": "1.0.1",
+  "description": "Node.js module to describe mysql database. Get table names, column specs as a json object.",
   "bin": {
     "descmysql": "./bin/descmysql"
   },
   "main": "lib",
   "scripts": {
-    "test": "nodeunit findout_test.js",
-    "cover": "istanbul cover nodeunit findout_test.js --dir coverage",
+    "build": "coz render lib/**/.*.bud",
+    "test": "nodeunit test/*.js",
+    "cover": "istanbul cover nodeunit test/*.js --dir coverage",
     "report": "codeclimate-test-reporter  < coverage/lcov.info",
     "versionup": "versionup",
     "taggit": "taggit"
@@ -21,7 +22,10 @@
     "mysql",
     "describe"
   ],
-  "author": "Taka Okunishi",
+  "author": {
+    "name": "Taka Okunishi",
+    "url": "http://okunishitaka.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/okunishinishi/node-descmysql/issues"
@@ -39,6 +43,7 @@
     "argx": "^1.1.1",
     "async": "^1.4.0",
     "commander": "^2.8.1",
+    "extend": "^3.0.0",
     "mysql": "^2.8.0"
   }
 }

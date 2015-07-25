@@ -3,64 +3,132 @@
  * Runs with nodeunit.
  */
 
-var MysqlDescriber = require('../lib/mysql_describer.js'),
-    fs = require('fs'),
-    async = require('async'),
-    path = require('path');
+var MysqlDescriber = require('../lib/describing/mysql_describer.js');
 
-var isTravis = String(process.env.TRAVIS) === "true";
-var config = isTravis ? {} : {user: 'root'};
-config.multipleStatements = true;
-
-var SETUP_SQL_FILE = path.resolve(__dirname, '../ci/asset/create_test_schema.sql');
-
+var testDbConfig = require('../ci/configs/test_db_config'),
+    setupTestDb = require('../ci/setup_test_db');
 
 exports.setUp = function (done) {
-    done();
-};
-
-exports['Mysql describer'] = function (test) {
-    fs.readFile(SETUP_SQL_FILE, function (err, data) {
-        var setupSql = String(data);
-        var describer = new MysqlDescriber(config);
-        describer.connect();
-        async.series([
-            function (callback) {
-                describer._execute(setupSql, function (err, data) {
-                    callback(err);
-                });
-            },
-            function (callback) {
-                describer._showDatabases(function (err, names) {
-                    test.ifError(err);
-                    test.ok(names);
-                    callback(err);
-                });
-            },
-            function (callback) {
-                describer._showTables('descmysql_test', function (err, names) {
-                    test.ifError(err);
-                    test.ok(names);
-                    callback(err);
-                });
-            },
-            function (callback) {
-                describer._descTable('descmysql_test', 'TEST_PERSON', function (err) {
-                    test.ifError(err);
-                    callback(err);
-                });
-            },
-            function (callback) {
-                describer.describe('descmysql_test', function (err) {
-                    test.ifError(err);
-                    callback(err);
-                });
-            }
-        ], function (err) {
-            test.ifError(err);
-            describer.disconnect();
-            test.done();
-        });
+    setupTestDb(function (err) {
+        done();
     });
 };
+
+exports['Describe database'] = function (test) {
+    var describer = new MysqlDescriber(testDbConfig);
+    describer.describeDatabase('descmysql_test', function (err, data) {
+        test.ifError(err);
+        test.deepEqual(data, {
+            "TEST_PERSON": {
+                "PersonID": {
+                    "Type": "int(11)",
+                    "Null": "YES",
+                    "Key": "",
+                    "Default": null,
+                    "Extra": ""
+                },
+                "LastName": {
+                    "Type": "varchar(255)",
+                    "Null": "YES",
+                    "Key": "",
+                    "Default": null,
+                    "Extra": ""
+                },
+                "FirstName": {
+                    "Type": "varchar(255)",
+                    "Null": "YES",
+                    "Key": "",
+                    "Default": null,
+                    "Extra": ""
+                },
+                "Address": {
+                    "Type": "varchar(255)",
+                    "Null": "YES",
+                    "Key": "",
+                    "Default": null,
+                    "Extra": ""
+                },
+                "City": {
+                    "Type": "varchar(255)",
+                    "Null": "YES",
+                    "Key": "",
+                    "Default": null,
+                    "Extra": ""
+                }
+            },
+            "TEST_SHOP": {
+                "article": {
+                    "Type": "int(4) unsigned zerofill",
+                    "Null": "NO",
+                    "Key": "PRI",
+                    "Default": "0000",
+                    "Extra": ""
+                },
+                "dealer": {
+                    "Type": "char(20)",
+                    "Null": "NO",
+                    "Key": "PRI",
+                    "Default": "",
+                    "Extra": ""
+                },
+                "price": {
+                    "Type": "double(16,2)",
+                    "Null": "NO",
+                    "Key": "",
+                    "Default": "0.00",
+                    "Extra": ""
+                }
+            }
+        });
+        test.ok(data);
+        test.done();
+    });
+};
+
+exports['Describe table'] = function (test) {
+    var describer = new MysqlDescriber(testDbConfig);
+    describer.describeTable('descmysql_test', 'TEST_PERSON', function (err, data) {
+        test.deepEqual(data, {
+            "PersonID": {
+                "Type": "int(11)",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": ""
+            },
+            "LastName": {
+                "Type": "varchar(255)",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": ""
+            },
+            "FirstName": {
+                "Type": "varchar(255)",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": ""
+            },
+            "Address": {
+                "Type": "varchar(255)",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": ""
+            },
+            "City": {
+                "Type": "varchar(255)",
+                "Null": "YES",
+                "Key": "",
+                "Default": null,
+                "Extra": ""
+            }
+        });
+        test.ifError(err);
+        test.done();
+    });
+};
+
+
 
