@@ -42,7 +42,7 @@ This will result like:
 
 ```javascript
 { // Tables in "my_db" database.
-     "TEST_PERSON": {  // Columns in "TEST_PERSON" table.
+     "TEST_PERSON": { // Columns in "TEST_PERSON" table.
           "PersonID": { // Spec of "TEST_PERSON.PersonID" column.
                "Type": "int(11)",
                "Null": "YES",
@@ -70,7 +70,10 @@ API
 | --------- | ----------- |
 | mysqldesc(config, callback) | Describe tables in the connected database. |
 | mysqldesc(config, databaseName, callback) | Describe tables in a specific database. | 
-| mysqldesc(config, databaseName, tableName, callback) | Describe  a specific table. | 
+| mysqldesc(config, databaseName, tableName, callback) | Describe  a specific table. |
+| mysqldesc.keyColumnUsage(config, callback) | Describe key column usage in the connected database. |
+| mysqldesc.keyColumnUsage(config, databaseName, callback) | Describe key column usage in a specific database. | 
+| mysqldesc.keyColumnUsage(config, databaseName, tableName, callback) | Describe  key column usage in a specific table. | 
 
 
 Tips

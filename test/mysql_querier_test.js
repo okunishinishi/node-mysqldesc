@@ -45,7 +45,14 @@ exports['Do query'] = function (test) {
                 test.ifError(err);
                 callback(err);
             });
+        },
+        function (callback) {
+            querier.selectKeyColumnUsage('descmysql_test', 'TEST_PRODUCT', function (err, data) {
+                test.ifError(err);
+                callback(err);
+            });
         }
+
     ], function (err) {
         test.ifError(err);
         querier.disconnect();

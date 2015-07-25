@@ -1,17 +1,31 @@
 CREATE DATABASE IF NOT EXISTS descmysql_test;
 USE descmysql_test;
+
+
+DROP TABLE IF EXISTS TEST_PERSON;
+DROP TABLE IF EXISTS TEST_PRODUCT;
+DROP TABLE IF EXISTS TEST_SHOP;
+
 CREATE TABLE IF NOT EXISTS TEST_SHOP (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     article INT(4) UNSIGNED ZEROFILL DEFAULT '0000' NOT NULL,
     dealer  CHAR(20)                 DEFAULT ''     NOT NULL,
     price   DOUBLE(16,2)             DEFAULT '0.00' NOT NULL,
-    PRIMARY KEY(article, dealer)
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS TEST_PRODUCT (
+     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+     shop_id SMALLINT UNSIGNED NOT NULL,
+     PRIMARY KEY (id),
+     FOREIGN KEY(shop_id) REFERENCES TEST_SHOP(id)
 );
 
 CREATE TABLE IF NOT EXISTS TEST_PERSON
 (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255)
+    id int,
+    last_name varchar(255),
+    first_name varchar(255),
+    address varchar(255),
+    city varchar(255)
 );
