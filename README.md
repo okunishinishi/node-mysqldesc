@@ -14,7 +14,7 @@ Installation
 ------------
 
 ```bash
-$ npm install descmysql --save-dev
+$ npm install mysqldesc --save-dev
 ```
 
 Usage
@@ -23,7 +23,7 @@ Usage
 Describe database data.
 
 ```javascript
-var descmysql =  require('descmysql');
+var mysqldesc =  require('mysqldesc');
 
 // Mysql connect config.
 var config = {
@@ -33,7 +33,7 @@ var config = {
      database: 'my_db'
 };
 // Desc connected database
-descmysql(config, function (err, data) {
+mysqldesc(config, function (err, data) {
     console.log(data);
 });
 ```
@@ -68,9 +68,9 @@ API
 
 | Signature | Description |
 | --------- | ----------- |
-| descmysql(config, callback) | Describe connected database |
-| descmysql(config, databaseName, callback) | Describe specific database | 
-| descmysql(config, databaseName, tableName, callback) | Describe specific table | 
+| mysqldesc(config, callback) | Describe tables in the connected database. |
+| mysqldesc(config, databaseName, callback) | Describe tables in a specific database. | 
+| mysqldesc(config, databaseName, tableName, callback) | Describe  a specific table. | 
 
 
 Tips
@@ -100,21 +100,21 @@ Links
 [npm_url]: https://www.npmjs.com/
 [nvm_url]: https://github.com/creationix/nvm
 [bitdeli_url]: https://bitdeli.com/free
-[my_bitdeli_badge_url]: https://d2weczhvl823v0.cloudfront.net/okunishinishi/node-descmysql/trend.png
-[my_repo_url]: https://github.com/okunishinishi/node-descmysql
-[my_travis_url]: http://travis-ci.org/okunishinishi/node-descmysql
-[my_travis_badge_url]: http://img.shields.io/travis/okunishinishi/node-descmysql.svg?style=flat
-[my_license_url]: https://github.com/okunishinishi/node-descmysql/blob/master/LICENSE
-[my_codeclimate_url]: http://codeclimate.com/github/okunishinishi/node-descmysql
-[my_codeclimate_badge_url]: http://img.shields.io/codeclimate/github/okunishinishi/node-descmysql.svg?style=flat
-[my_codeclimate_coverage_badge_url]: http://img.shields.io/codeclimate/coverage/github/okunishinishi/node-descmysql.svg?style=flat
-[my_apiguide_url]: http://okunishinishi.github.io/node-descmysql/apiguide
-[my_lib_apiguide_url]: http://okunishinishi.github.io/node-descmysql/apiguide/module-descmysql_lib.html
-[my_coverage_url]: http://okunishinishi.github.io/node-descmysql/coverage/lcov-report
-[my_coverage_report_url]: http://okunishinishi.github.io/node-descmysql/coverage/lcov-report/
+[my_bitdeli_badge_url]: https://d2weczhvl823v0.cloudfront.net/okunishinishi/node-mysqldesc/trend.png
+[my_repo_url]: https://github.com/okunishinishi/node-mysqldesc
+[my_travis_url]: http://travis-ci.org/okunishinishi/node-mysqldesc
+[my_travis_badge_url]: http://img.shields.io/travis/okunishinishi/node-mysqldesc.svg?style=flat
+[my_license_url]: https://github.com/okunishinishi/node-mysqldesc/blob/master/LICENSE
+[my_codeclimate_url]: http://codeclimate.com/github/okunishinishi/node-mysqldesc
+[my_codeclimate_badge_url]: http://img.shields.io/codeclimate/github/okunishinishi/node-mysqldesc.svg?style=flat
+[my_codeclimate_coverage_badge_url]: http://img.shields.io/codeclimate/coverage/github/okunishinishi/node-mysqldesc.svg?style=flat
+[my_apiguide_url]: http://okunishinishi.github.io/node-mysqldesc/apiguide
+[my_lib_apiguide_url]: http://okunishinishi.github.io/node-mysqldesc/apiguide/module-mysqldesc_lib.html
+[my_coverage_url]: http://okunishinishi.github.io/node-mysqldesc/coverage/lcov-report
+[my_coverage_report_url]: http://okunishinishi.github.io/node-mysqldesc/coverage/lcov-report/
 [my_gratipay_url]: https://gratipay.com/okunishinishi/
 [my_gratipay_budge_url]: http://img.shields.io/gratipay/okunishinishi.svg?style=flat
-[my_npm_url]: http://www.npmjs.org/package/descmysql
-[my_npm_budge_url]: http://img.shields.io/npm/v/descmysql.svg?style=flat
-[my_tag_url]: http://github.com/okunishinishi/node-descmysql/releases/tag/
-[my_tag_badge_url]: http://img.shields.io/github/tag/okunishinishi/node-descmysql.svg?style=flat
+[my_npm_url]: http://www.npmjs.org/package/mysqldesc
+[my_npm_budge_url]: http://img.shields.io/npm/v/mysqldesc.svg?style=flat
+[my_tag_url]: http://github.com/okunishinishi/node-mysqldesc/releases/tag/
+[my_tag_badge_url]: http://img.shields.io/github/tag/okunishinishi/node-mysqldesc.svg?style=flat

@@ -1,10 +1,7 @@
 {
   "name": "mysqldesc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js module to describe mysql database. Get table names, column specs as a json object.",
-  "bin": {
-    "descmysql": "./bin/descmysql"
-  },
   "main": "lib",
   "scripts": {
     "build": "coz render lib/**/.*.bud",
@@ -36,13 +33,12 @@
     "coz": "^1.2.5",
     "istanbul": "^0.3.17",
     "nodeunit": "^0.9.1",
-    "taggit": "^1.0.3",
+    "taggit": "^1.0.4",
     "versionup": "^1.0.7"
   },
   "dependencies": {
-    "argx": "^1.1.1",
+    "argx": "^1.1.4",
     "async": "^1.4.0",
-    "commander": "^2.8.1",
     "extend": "^3.0.0",
     "mysql": "^2.8.0"
   }
