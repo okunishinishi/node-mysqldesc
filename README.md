@@ -41,7 +41,7 @@ mysqldesc(config, function (err, data) {
 This will result like:
 
 ```javascript
-{
+{ // Tables in "my_db" database.
      "TEST_PERSON": {  // Columns in "TEST_PERSON" table.
           "PersonID": { // Spec of "TEST_PERSON.PersonID" column.
                "Type": "int(11)",
