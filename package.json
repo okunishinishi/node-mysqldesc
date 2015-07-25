@@ -1,6 +1,6 @@
 {
   "name": "mysqldesc",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Describe mysql database. Get table names, column specs as a json object.",
   "main": "lib",
   "scripts": {

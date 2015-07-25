@@ -87,26 +87,9 @@ exports['Describe table key column usage.'] = function (test) {
     var describer = new MysqlDescriber(testDbConfig);
     describer.describeTableKeyColumnUsage('descmysql_test', 'TEST_PRODUCT', function (err, data) {
         test.ifError(err);
-        test.deepEqual(data, {
-            id: {
-                CONSTRAINT_CATALOG: 'def',
-                CONSTRAINT_SCHEMA: 'descmysql_test',
-                CONSTRAINT_NAME: 'PRIMARY',
-                TABLE_CATALOG: 'def',
-                ORDINAL_POSITION: 1
-            },
-            shop_id: {
-                CONSTRAINT_CATALOG: 'def',
-                CONSTRAINT_SCHEMA: 'descmysql_test',
-                CONSTRAINT_NAME: 'test_product_ibfk_1',
-                TABLE_CATALOG: 'def',
-                ORDINAL_POSITION: 1,
-                POSITION_IN_UNIQUE_CONSTRAINT: 1,
-                REFERENCED_TABLE_SCHEMA: 'descmysql_test',
-                REFERENCED_TABLE_NAME: 'TEST_SHOP',
-                REFERENCED_COLUMN_NAME: 'id'
-            }
-        });
+        test.deepEqual(Object.keys(data), [
+            "id", "shop_id"
+        ]);
         test.done();
     });
 
