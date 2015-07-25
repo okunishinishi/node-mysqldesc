@@ -18,79 +18,11 @@ exports['Describe database'] = function (test) {
     var describer = new MysqlDescriber(testDbConfig);
     describer.describeDatabase('descmysql_test', function (err, data) {
         test.ifError(err);
-        test.deepEqual(data, {
-            TEST_PERSON: {
-                id: {Type: 'int(11)', Null: 'YES', Key: '', Default: null, Extra: ''},
-                last_name: {
-                    Type: 'varchar(255)',
-                    Null: 'YES',
-                    Key: '',
-                    Default: null,
-                    Extra: ''
-                },
-                first_name: {
-                    Type: 'varchar(255)',
-                    Null: 'YES',
-                    Key: '',
-                    Default: null,
-                    Extra: ''
-                },
-                address: {
-                    Type: 'varchar(255)',
-                    Null: 'YES',
-                    Key: '',
-                    Default: null,
-                    Extra: ''
-                },
-                city: {
-                    Type: 'varchar(255)',
-                    Null: 'YES',
-                    Key: '',
-                    Default: null,
-                    Extra: ''
-                }
-            },
-            TEST_PRODUCT: {
-                id: {
-                    Type: 'smallint(5) unsigned',
-                    Null: 'NO',
-                    Key: 'PRI',
-                    Default: null,
-                    Extra: 'auto_increment'
-                },
-                shop_id: {
-                    Type: 'smallint(5) unsigned',
-                    Null: 'NO',
-                    Key: 'MUL',
-                    Default: null,
-                    Extra: ''
-                }
-            },
-            TEST_SHOP: {
-                id: {
-                    Type: 'smallint(5) unsigned',
-                    Null: 'NO',
-                    Key: 'PRI',
-                    Default: null,
-                    Extra: 'auto_increment'
-                },
-                article: {
-                    Type: 'int(4) unsigned zerofill',
-                    Null: 'NO',
-                    Key: '',
-                    Default: '0000',
-                    Extra: ''
-                },
-                dealer: {Type: 'char(20)', Null: 'NO', Key: '', Default: '', Extra: ''},
-                price: {
-                    Type: 'double(16,2)',
-                    Null: 'NO',
-                    Key: '',
-                    Default: '0.00',
-                    Extra: ''
-                }
-            }
-        });
+        test.deepEqual(Object.keys(data), [
+            "TEST_PERSON",
+            "TEST_PRODUCT",
+            "TEST_SHOP"
+        ]);
         test.ok(data);
         test.done();
     });
@@ -99,37 +31,13 @@ exports['Describe database'] = function (test) {
 exports['Describe table'] = function (test) {
     var describer = new MysqlDescriber(testDbConfig);
     describer.describeTable('descmysql_test', 'TEST_PERSON', function (err, data) {
-        test.deepEqual(data, {
-            id: {Type: 'int(11)', Null: 'YES', Key: '', Default: null, Extra: ''},
-            last_name: {
-                Type: 'varchar(255)',
-                Null: 'YES',
-                Key: '',
-                Default: null,
-                Extra: ''
-            },
-            first_name: {
-                Type: 'varchar(255)',
-                Null: 'YES',
-                Key: '',
-                Default: null,
-                Extra: ''
-            },
-            address: {
-                Type: 'varchar(255)',
-                Null: 'YES',
-                Key: '',
-                Default: null,
-                Extra: ''
-            },
-            city: {
-                Type: 'varchar(255)',
-                Null: 'YES',
-                Key: '',
-                Default: null,
-                Extra: ''
-            }
-        });
+        test.deepEqual(Object.keys(data), [
+            "id",
+            "last_name",
+            "first_name",
+            "address",
+            "city"
+        ]);
         test.ifError(err);
         test.done();
     });
