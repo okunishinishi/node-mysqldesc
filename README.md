@@ -1,80 +1,105 @@
 mysqldesc
-=========
+==========
+
+<!-- Badge Start -->
+<a name="badges"></a>
+
+[![Build Status][bd_travis_shield_url]][bd_travis_url]
+[![Code Climate][bd_codeclimate_shield_url]][bd_codeclimate_url]
+[![Code Coverage][bd_codeclimate_coverage_shield_url]][bd_codeclimate_url]
+[![npm Version][bd_npm_shield_url]][bd_npm_url]
+
+[bd_repo_url]: https://github.com/okunishinishi/node-mysqldesc
+[bd_travis_url]: http://travis-ci.org/okunishinishi/node-mysqldesc
+[bd_travis_shield_url]: http://img.shields.io/travis/okunishinishi/node-mysqldesc.svg?style=flat
+[bd_license_url]: https://github.com/okunishinishi/node-mysqldesc/blob/master/LICENSE
+[bd_codeclimate_url]: http://codeclimate.com/github/okunishinishi/node-mysqldesc
+[bd_codeclimate_shield_url]: http://img.shields.io/codeclimate/github/okunishinishi/node-mysqldesc.svg?style=flat
+[bd_codeclimate_coverage_shield_url]: http://img.shields.io/codeclimate/coverage/github/okunishinishi/node-mysqldesc.svg?style=flat
+[bd_gemnasium_url]: https://gemnasium.com/okunishinishi/node-mysqldesc
+[bd_gemnasium_shield_url]: https://gemnasium.com/okunishinishi/node-mysqldesc.svg
+[bd_npm_url]: http://www.npmjs.org/package/mysqldesc
+[bd_npm_shield_url]: http://img.shields.io/npm/v/mysqldesc.svg?style=flat
+
+<!-- Badge End -->
+
+
+<!-- Description Start -->
+<a name="description"></a>
 
 Describe mysql database. Get table names, column specs as a json object.
 
-<!-- Badge start -->
+<!-- Description End -->
 
-[![Build Status][my_travis_badge_url]][my_travis_url]
-[![Code Climate][my_codeclimate_badge_url]][my_codeclimate_url]
-[![Code Coverage][my_codeclimate_coverage_badge_url]][my_codeclimate_url]
-[![npm version][my_npm_budge_url]][my_npm_url]
+
+
+<!-- Sections Start -->
+<a name="sections"></a>
 
 Installation
-------------
+-----
 
 ```bash
-$ npm install mysqldesc --save-dev
+npm install mysqldesc --save-dev
 ```
 
 Usage
------
+-------
 
 Describe database data.
 
-```javascript
-var mysqldesc =  require('mysqldesc');
+```Javascript
+var mysqldesc = require('mysqldesc');
 
 // Mysql connect config.
 var config = {
-     user: 'root',
-     password: 'my_password',
-     host: 'localhost',
-     database: 'my_db'
+    user: 'root',
+    password: 'my_password',
+    host: 'localhost',
+    database: 'my_db'
 };
 // Desc connected database
 mysqldesc(config, function (err, data) {
-    console.log(data);
+    console.log("structure=" + JSON.stringify(data, null, 4));
 });
 ```
 
 This will result like:
 
-```javascript
-{ // Tables in "my_db" database.
-     "TEST_PERSON": { // Columns in "TEST_PERSON" table.
-          "PersonID": { // Spec of "TEST_PERSON.PersonID" column.
-               "Type": "int(11)",
-               "Null": "YES",
-               "Key": "",
-               "Default": null,
-               "Extra": ""
-          },
-          "LastName": {
-               "Type": "varchar(255)",
-               "Null": "YES",
-               "Key": "",
-               "Default": null,
-               "Extra": ""
-          },
-     },
-     "TEST_SHOP": {
-          /*...*/
-     }
+```Javascript
+data = { // Tables in "my_db" database.
+    "TEST_PERSON": { // Columns in "TEST_PERSON" table.
+        "PersonID": { // Spec of "TEST_PERSON.PersonID" column.
+            "Type": "int(11)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        },
+        "LastName": {
+            "Type": "varchar(255)",
+            "Null": "YES",
+            "Key": "",
+            "Default": null,
+            "Extra": ""
+        }
+    },
+    "TEST_SHOP": {
+        /*...*/
+    }
+};
 ```
-
 API
 ------
 
 | Signature | Description |
 | --------- | ----------- |
 | mysqldesc(config, callback) | Describe tables in the connected database. |
-| mysqldesc(config, databaseName, callback) | Describe tables in a specific database. | 
+| mysqldesc(config, databaseName, callback) | Describe tables in a specific database. |
 | mysqldesc(config, databaseName, tableName, callback) | Describe  a specific table. |
 | mysqldesc.keyColumnUsage(config, callback) | Describe key column usage in the connected database. |
-| mysqldesc.keyColumnUsage(config, databaseName, callback) | Describe key column usage in a specific database. | 
-| mysqldesc.keyColumnUsage(config, databaseName, tableName, callback) | Describe  key column usage in a specific table. | 
-
+| mysqldesc.keyColumnUsage(config, databaseName, callback) | Describe key column usage in a specific database. |
+| mysqldesc.keyColumnUsage(config, databaseName, tableName, callback) | Describe  key column usage in a specific table. |
 
 Tips
 ----
@@ -84,40 +109,26 @@ Tips
 `mysqldesc` uses [node-mysql][node_mysql_url] as connector.
 For more advanced setting, see the [node-mysql documents about Connection options][node_mysql_connection_doc_url]
 
+
+<!-- Sections Start -->
+
+
+<!-- LICENSE Start -->
+<a name="license"></a>
+
 License
 -------
-This software is released under the [MIT License][my_license_url].
+This software is released under the [MIT License](https://github.com/okunishinishi/node-mysqldesc/blob/master/LICENSE).
 
+<!-- LICENSE End -->
+
+
+<!-- Links Start -->
+<a name="links"></a>
 
 Links
------
+------
 
-+ [node-mysql][node_mysql_url] 
++ [node-mysql](https://github.com/felixge/node-mysql/)
 
-
-<!-- Links start -->
-
-[nodejs_url]: http://nodejs.org/
-[node_mysql_url]: https://github.com/felixge/node-mysql/
-[node_mysql_connection_doc_url]: https://github.com/felixge/node-mysql/#connection-options
-[npm_url]: https://www.npmjs.com/
-[nvm_url]: https://github.com/creationix/nvm
-[bitdeli_url]: https://bitdeli.com/free
-[my_bitdeli_badge_url]: https://d2weczhvl823v0.cloudfront.net/okunishinishi/node-mysqldesc/trend.png
-[my_repo_url]: https://github.com/okunishinishi/node-mysqldesc
-[my_travis_url]: http://travis-ci.org/okunishinishi/node-mysqldesc
-[my_travis_badge_url]: http://img.shields.io/travis/okunishinishi/node-mysqldesc.svg?style=flat
-[my_license_url]: https://github.com/okunishinishi/node-mysqldesc/blob/master/LICENSE
-[my_codeclimate_url]: http://codeclimate.com/github/okunishinishi/node-mysqldesc
-[my_codeclimate_badge_url]: http://img.shields.io/codeclimate/github/okunishinishi/node-mysqldesc.svg?style=flat
-[my_codeclimate_coverage_badge_url]: http://img.shields.io/codeclimate/coverage/github/okunishinishi/node-mysqldesc.svg?style=flat
-[my_apiguide_url]: http://okunishinishi.github.io/node-mysqldesc/apiguide
-[my_lib_apiguide_url]: http://okunishinishi.github.io/node-mysqldesc/apiguide/module-mysqldesc_lib.html
-[my_coverage_url]: http://okunishinishi.github.io/node-mysqldesc/coverage/lcov-report
-[my_coverage_report_url]: http://okunishinishi.github.io/node-mysqldesc/coverage/lcov-report/
-[my_gratipay_url]: https://gratipay.com/okunishinishi/
-[my_gratipay_budge_url]: http://img.shields.io/gratipay/okunishinishi.svg?style=flat
-[my_npm_url]: http://www.npmjs.org/package/mysqldesc
-[my_npm_budge_url]: http://img.shields.io/npm/v/mysqldesc.svg?style=flat
-[my_tag_url]: http://github.com/okunishinishi/node-mysqldesc/releases/tag/
-[my_tag_badge_url]: http://img.shields.io/github/tag/okunishinishi/node-mysqldesc.svg?style=flat
+<!-- Links End -->
