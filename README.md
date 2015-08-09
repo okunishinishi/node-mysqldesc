@@ -106,8 +106,8 @@ Tips
 
 ### Connection Options
 
-`mysqldesc` uses [node-mysql][node_mysql_url] as connector.
-For more advanced setting, see the [node-mysql documents about Connection options][node_mysql_connection_doc_url]
+`mysqldesc` uses [node-mysql](https://github.com/felixge/node-mysql/) as connector.
+For more advanced setting, see the [node-mysql documents about Connection options](https://github.com/felixge/node-mysql/#connection-options)
 
 
 <!-- Sections Start -->
